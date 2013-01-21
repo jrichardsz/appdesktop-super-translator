@@ -31,7 +31,7 @@ public class Translator extends javax.swing.JFrame {
     public Translator() {
 
         initComponents();
-        setTitle("Super Translator 1.0 ->JRichard - ROLI");
+        setTitle("Super Translator 1.0");
         setAlwaysOnTop(true);
         JFrameUtil.setIconApp(this);
         initialize();
@@ -339,6 +339,6 @@ public class Translator extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private Timer timer;
     private boolean isFirst = false;
-    private int ancho_frame = 355;
-    private int alto_frame = 138;
+    private int ancho_frame = 330;
+    private int alto_frame = 125;
 }

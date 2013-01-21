@@ -19,7 +19,7 @@ public class Main {
         /*
          * Set the Nimbus look and feel
          */
-        WindowUtilities.setNimbusLookAndFeel();
+        WindowUtilities.setNativeLookAndFeel();
         /*
          * Create and display the form
          */

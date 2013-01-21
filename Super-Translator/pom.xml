@@ -34,6 +34,12 @@
             <scope>compile</scope>
             <version>1.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.gtranslat</groupId>
+            <artifactId>gtranslateapi</artifactId>
+            <version>1.0</version>
+        </dependency>
+            
     </dependencies>
     
     
@@ -134,30 +140,8 @@
                             </resources>              
                         </configuration>                          
                     </execution>   
-                    
-                    <execution>
-                        <id>copy-resources-nb</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${basedir}/</outputDirectory>
-                            <resources>          
-                                <resource>
-                                    <directory>src/main/resources</directory>
-                                    <filtering>true</filtering>
-                                    <excludes>
-                                        <exclude>**/*.exe</exclude>
-                                        <exclude>**/*.bat</exclude>
-                                    </excludes>
-                                </resource>
-                            </resources>              
-                        </configuration>                          
-                    </execution>                                          
-
                 </executions>
-            </plugin>
+            </plugin>                      
         </plugins>
     </build>
 

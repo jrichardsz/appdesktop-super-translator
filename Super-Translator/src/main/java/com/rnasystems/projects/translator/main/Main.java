@@ -5,7 +5,7 @@
 package com.rnasystems.projects.translator.main;
 
 import com.rnasystems.api.linet.util.lookAndFeel.WindowUtilities;
-import com.rnasystems.projects.translator.view.Translator;
+import com.rnasystems.projects.translator.view.View;
 
 /**
  *
@@ -27,7 +27,7 @@ public class Main {
 
             public void run() {
                 new Initialize();
-                new Translator().setVisible(true);
+                new View().setVisible(true);
             }
         });
     }

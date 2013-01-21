@@ -6,7 +6,8 @@ package com.rnasystems.projects.translator.view;
 
 import com.rnasystems.api.linet.util.swing.JFrameUtil;
 import com.rnasystems.api.linet.util.swing.SwingUtil;
-import com.rnasystems.projects.translator.core.GoogleUtilTranslator;
+//import com.rnasystems.projects.translator.core.GoogleUtilTranslator;
+import com.rnasystems.projects.translator.core.UtilTranslator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Timer;
@@ -68,6 +69,7 @@ public class View extends javax.swing.JFrame {
         });
 
         jButton1.setText("exit");
+        jButton1.setToolTipText("Simplmente exit.");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -75,6 +77,7 @@ public class View extends javax.swing.JFrame {
         });
 
         jButton2.setText("start");
+        jButton2.setToolTipText("Una ves presionado este boton, cualquier texto que selecciones y copies se traducira automaticamente.");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -82,6 +85,7 @@ public class View extends javax.swing.JFrame {
         });
 
         jButton4.setText("now");
+        jButton4.setToolTipText("Este boton traducira el texto ingresado en el input espaniol");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -89,6 +93,7 @@ public class View extends javax.swing.JFrame {
         });
 
         jButton5.setText("clean");
+        jButton5.setToolTipText("Este boton limpia el texto de los 02 inputs.");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -96,6 +101,7 @@ public class View extends javax.swing.JFrame {
         });
 
         jButton3.setText("stop");
+        jButton3.setToolTipText("IMPORTANTE: Presionar este boton cuando no se use la aplicacion. De no hacerlo,  el clipboard del sistema se limpiara ciclicamente, lo que te impedira copiar textos.");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -155,8 +161,8 @@ public class View extends javax.swing.JFrame {
                                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldSpanish, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
-                            .addComponent(jTextFieldEnglish, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE))
+                            .addComponent(jTextFieldSpanish, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+                            .addComponent(jTextFieldEnglish, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE))
                         .addGap(14, 14, 14)))
                 .addContainerGap())
         );
@@ -209,8 +215,8 @@ public class View extends javax.swing.JFrame {
         String texto = jTextFieldSpanish.getText();
         texto = limpiaTexto(texto);
         try {
-            jTextFieldEnglish.setText(GoogleUtilTranslator.translate(texto, "es", "en"));
-            jTextFieldSpanish.setText(GoogleUtilTranslator.translate(texto, "en", "es"));
+            jTextFieldEnglish.setText(UtilTranslator.translate(texto, "es", "en"));
+            jTextFieldSpanish.setText(UtilTranslator.translate(texto, "en", "es"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -229,7 +235,7 @@ public class View extends javax.swing.JFrame {
             String texto = jTextFieldEnglish.getText();
             texto = limpiaTexto(texto);
             try {
-                inputStream = GoogleUtilTranslator.translateTTS(texto, "en");
+                inputStream = UtilTranslator.translateTTS(texto, "en");
             } catch (Exception ex) {
                 Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -280,8 +286,8 @@ public class View extends javax.swing.JFrame {
                         if (texto != null && !texto.equals("")) {
 
                             if (isFirst) {
-                                jTextFieldEnglish.setText(GoogleUtilTranslator.translate(texto, "es", "en"));
-                                jTextFieldSpanish.setText(GoogleUtilTranslator.translate(texto, "en", "es"));
+                                jTextFieldEnglish.setText(UtilTranslator.translate(texto, "es", "en"));
+                                jTextFieldSpanish.setText(UtilTranslator.translate(texto, "en", "es"));
                                 clear();
                             } else {
                                 isFirst = true;

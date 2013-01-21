@@ -38,8 +38,8 @@
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTextFieldSpanish" pref="275" max="32767" attributes="2"/>
-                          <Component id="jTextFieldEnglish" alignment="0" pref="275" max="32767" attributes="2"/>
+                          <Component id="jTextFieldSpanish" pref="285" max="32767" attributes="2"/>
+                          <Component id="jTextFieldEnglish" alignment="0" pref="285" max="32767" attributes="2"/>
                       </Group>
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   </Group>
@@ -112,6 +112,7 @@
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
             <Property name="text" type="java.lang.String" value="exit"/>
+            <Property name="toolTipText" type="java.lang.String" value="Simplmente exit."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
@@ -120,6 +121,7 @@
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
             <Property name="text" type="java.lang.String" value="start"/>
+            <Property name="toolTipText" type="java.lang.String" value="Una ves presionado este boton, cualquier texto que selecciones y copies se traducira automaticamente."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
@@ -128,6 +130,7 @@
         <Component class="javax.swing.JButton" name="jButton4">
           <Properties>
             <Property name="text" type="java.lang.String" value="now"/>
+            <Property name="toolTipText" type="java.lang.String" value="Este boton traducira el texto ingresado en el input espaniol"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
@@ -136,6 +139,7 @@
         <Component class="javax.swing.JButton" name="jButton5">
           <Properties>
             <Property name="text" type="java.lang.String" value="clean"/>
+            <Property name="toolTipText" type="java.lang.String" value="Este boton limpia el texto de los 02 inputs."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
@@ -144,6 +148,7 @@
         <Component class="javax.swing.JButton" name="jButton3">
           <Properties>
             <Property name="text" type="java.lang.String" value="stop"/>
+            <Property name="toolTipText" type="java.lang.String" value="IMPORTANTE: Presionar este boton cuando no se use la aplicacion. De no hacerlo,  el clipboard del sistema se limpiara ciclicamente, lo que te impedira copiar textos."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>

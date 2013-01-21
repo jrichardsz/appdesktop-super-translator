@@ -136,6 +136,7 @@ public class View extends javax.swing.JFrame {
         );
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/rnasystems/projects/translator/images/ImgFlagUS.png"))); // NOI18N
+        jButton6.setToolTipText("Este boton reproduce en forma de audio el texto de el input ingles.");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);

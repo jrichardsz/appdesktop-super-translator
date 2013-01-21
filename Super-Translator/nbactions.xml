@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>run</actionName>
+            <goals>
+                <goal>process-classes</goal>
+                <goal>org.codehaus.mojo:exec-maven-plugin:1.2:exec</goal>
+            </goals>
+            <properties>
+                <exec.classpathScope>runtime</exec.classpathScope>
+                <exec.args>-classpath %classpath com.rnasystems.projects.translator.main.Main</exec.args>
+                <exec.executable>java</exec.executable>
+            </properties>
+        </action>
+        <action>
+            <actionName>debug</actionName>
+            <goals>
+                <goal>process-classes</goal>
+                <goal>org.codehaus.mojo:exec-maven-plugin:1.2:exec</goal>
+            </goals>
+            <properties>
+                <exec.classpathScope>runtime</exec.classpathScope>
+                <exec.args>-Xdebug -Xrunjdwp:transport=dt_socket,server=n,address=${jpda.address} -classpath %classpath com.rnasystems.projects.translator.main.Main</exec.args>
+                <jpda.listen>true</jpda.listen>
+                <exec.executable>java</exec.executable>
+            </properties>
+        </action>
+        <action>
+            <actionName>profile</actionName>
+            <goals>
+                <goal>process-classes</goal>
+                <goal>org.codehaus.mojo:exec-maven-plugin:1.1.1:exec</goal>
+            </goals>
+            <properties>
+                <exec.args>${profiler.args} -classpath %classpath com.rnasystems.projects.translator.main.Main</exec.args>
+                <profiler.action>profile</profiler.action>
+                <exec.executable>${profiler.java}</exec.executable>
+            </properties>
+        </action>
+        <action>
+            <actionName>CUSTOM-package</actionName>
+            <displayName>package</displayName>
+            <goals>
+                <goal>package</goal>
+            </goals>
+        </action>
+        <action>
+            <actionName>CUSTOM-clean install</actionName>
+            <displayName>clean install</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>install</goal>
+            </goals>
+        </action>
+        <action>
+            <actionName>CUSTOM-compiler:compile</actionName>
+            <displayName>compiler:compile</displayName>
+            <goals>
+                <goal>compiler:compile</goal>
+            </goals>
+        </action>
+        <action>
+            <actionName>CUSTOM-install:instal</actionName>
+            <displayName>install:instal</displayName>
+            <goals>
+                <goal>install:install</goal>
+            </goals>
+            <properties>
+                <skipTests>true</skipTests>
+            </properties>
+        </action>
+        <action>
+            <actionName>CUSTOM-Run-Proy</actionName>
+            <displayName>Run-Proy</displayName>
+        </action>
+        <action>
+            <actionName>CUSTOM-clean install clean</actionName>
+            <displayName>clean install clean</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>install</goal>
+                <goal>clean</goal>
+            </goals>
+        </action>
+    </actions>

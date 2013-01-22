@@ -1,6 +1,6 @@
 #Super Translator
 
-This is the project that translates from English <-> Spanish in a fast using java and google. 
+This is the project that translates from English <---> Spanish in a fast using java and google. 
 
 ## Description
 

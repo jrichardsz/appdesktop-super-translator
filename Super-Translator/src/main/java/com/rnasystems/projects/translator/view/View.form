@@ -38,8 +38,8 @@
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTextFieldSpanish" pref="285" max="32767" attributes="2"/>
-                          <Component id="jTextFieldEnglish" alignment="0" pref="285" max="32767" attributes="2"/>
+                          <Component id="jTextFieldSpanish" pref="295" max="32767" attributes="2"/>
+                          <Component id="jTextFieldEnglish" alignment="0" pref="295" max="32767" attributes="2"/>
                       </Group>
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   </Group>

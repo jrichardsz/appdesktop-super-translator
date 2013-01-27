@@ -8,6 +8,8 @@ import com.rnasystems.api.linet.util.swing.JFrameUtil;
 import com.rnasystems.api.linet.util.swing.SwingUtil;
 //import com.rnasystems.projects.translator.core.GoogleUtilTranslator;
 import com.rnasystems.projects.translator.core.UtilTranslator;
+import java.awt.Dimension;
+import java.awt.Rectangle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Timer;
@@ -37,7 +39,13 @@ public class View extends javax.swing.JFrame {
         initialize();
         setAlwaysOnTop(true);
         SwingUtil.centrarJFrame(this);
-        setSize(ancho_frame, alto_frame);
+        resize();
+    }
+    
+    public void resize(){
+        Rectangle d = jButton6.getBounds();
+        int height = (int)d.getY()+(int)d.getHeight()+margen_gui;
+        setSize((int)getSize().getWidth(),height);
     }
 
     /**
@@ -346,6 +354,5 @@ public class View extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private Timer timer;
     private boolean isFirst = false;
-    private int ancho_frame = 330;
-    private int alto_frame = 125;
+    private int margen_gui = 35;
 }

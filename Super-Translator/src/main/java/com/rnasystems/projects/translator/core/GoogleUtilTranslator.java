@@ -5,7 +5,6 @@
 package com.rnasystems.projects.translator.core;
 
 import com.gtranslate.Audio;
-import com.gtranslate.Language;
 import com.gtranslate.Translator;
 import com.rnasystems.projects.translator.util.TranslatorParameters;
 import java.io.IOException;
@@ -14,6 +13,8 @@ import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -28,20 +29,47 @@ public class GoogleUtilTranslator {
         if (palabra == null || palabra.equals("")) {
             return null;
         }
-
+        
         Translator translate = Translator.getInstance();
         output = translate.translate(palabra, languajeIni, languajeEnd);
-
+        output = extraeSoloTraduccion(output);
         return output;
     }
 
-     public static InputStream translateTTS(String palabra,String languaje) throws IOException, Exception {
-         
-         Audio audio = Audio.getInstance();
-         InputStream sound  = audio.getAudio(palabra, languaje);
-         return sound;
-     }    
-    
+    private static String extraeSoloTraduccion(String input) {
+
+        if (input == null) {
+            return null;
+        }
+
+        Pattern pattern = Pattern.compile("[\\[]{3}\"{1}[^\"]+");
+        Matcher matcher = pattern.matcher(input);
+        String buscado = null;
+
+        if (matcher.find()) {
+            buscado = matcher.group();
+        }
+        //afinamos lo encontrado
+        if (buscado == null) {
+            return null;
+        }
+
+        pattern = Pattern.compile("[\\[]{3}\"{1}");
+        matcher = pattern.matcher(buscado);
+
+        if (matcher.find()) {
+            buscado = matcher.replaceAll("");
+        }
+        return buscado;
+    }
+
+    public static InputStream translateTTS(String palabra, String languaje) throws IOException, Exception {
+
+        Audio audio = Audio.getInstance();
+        InputStream sound = audio.getAudio(palabra, languaje);
+        return sound;
+    }
+
     private static URLConnection getURLConnection(URL url) throws IOException, Exception {
 
         String enable = TranslatorParameters.getProperty("enable.proxy");
@@ -56,7 +84,7 @@ public class GoogleUtilTranslator {
         }
     }
 
-    public static void main(String args[]) throws IOException, Exception {
+    public static void main2(String args[]) throws IOException, Exception {
         System.out.println(GoogleUtilTranslator.translate("", null, null));
     }
 }

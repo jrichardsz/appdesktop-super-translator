@@ -16,7 +16,7 @@ import javazoom.jl.player.Player;
 
 public class PruebaAudio {
 
-    public static void main(String[] args) throws IOException, InterruptedException, JavaLayerException {
+    public static void main2(String[] args) throws IOException, InterruptedException, JavaLayerException {
        
 //        CargarAudioYReproducir  audioYReproducir = new CargarAudioYReproducir();
 //        AudioClip sonido1, sonido2, sonidoActual;  

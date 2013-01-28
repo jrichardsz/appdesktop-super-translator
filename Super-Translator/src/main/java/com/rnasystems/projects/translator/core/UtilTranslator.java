@@ -172,4 +172,17 @@ public class UtilTranslator {
         }
         return buscado;
     }    
+    
+    public static String limpiaTexto(String input) {
+        return input.replace("’", "'");
+    }    
+
+    public static boolean esValidoTexto(String text) {
+        
+        if(text!=null && !text.equals("")){
+            return true;
+        }else {
+            return false;
+        }
+    }    
 }

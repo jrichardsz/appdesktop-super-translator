@@ -5,14 +5,15 @@
 package com.rnasystems.projects.translator.main;
 
 import com.rnasystems.api.linet.util.lookAndFeel.WindowUtilities;
-import com.rnasystems.projects.translator.view.View;
+import com.rnasystems.projects.translator.vista.main.VistaPrincipal;
 
 /**
  *
  * @author Richard Osmar Leon Ingaruca
  */
 public class Main {
-        /**
+
+    /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -26,8 +27,10 @@ public class Main {
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                new Initialize();
-                new View().setVisible(true);
+
+                new ObjectFactory().execute();
+//                VistaPrincipal vistaPrincipal = new VistaPrincipal();
+//                vistaPrincipal.setVisible(true);
             }
         });
     }

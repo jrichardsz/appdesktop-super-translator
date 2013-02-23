@@ -4,9 +4,10 @@
  */
 package com.rnasystems.projects.translator.main;
 
-import com.rnasystems.api.linet.util.archivos.ArchivoUtil;
+import com.linet.util.file.FileUtil;
 import com.rnasystems.projects.translator.controler.now.CNow;
 import com.rnasystems.projects.translator.controler.start.CAutomaticTranslate;
+import com.rnasystems.projects.translator.controler.tts.CTts;
 import com.rnasystems.projects.translator.util.TranslatorParameters;
 import com.rnasystems.projects.translator.vista.main.VistaPrincipal;
 import java.io.File;
@@ -18,7 +19,7 @@ import java.io.File;
 public class ObjectFactory {
 
     public void execute() {
-        TranslatorParameters.initializePath(ArchivoUtil.getPathDirectorioEjecucion() + File.separator + "config" + File.separator + "config.properties");
+        TranslatorParameters.initializePath(FileUtil.getPathFromWhereApplicationIsRunning() + File.separator + "config" + File.separator + "config.properties");
         inicializaVista();
         inicializaControlers();
     }
@@ -26,23 +27,19 @@ public class ObjectFactory {
     public void inicializaControlers() {
         cautomaticTranslate = new CAutomaticTranslate(vistaPrincipal);
         cNow = new CNow(vistaPrincipal);
+        cTts = new CTts(vistaPrincipal);
     }
 
     public void inicializaVista() {
 
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//
-//            public void run() {
-
-                if (vistaPrincipal == null) {
-                    vistaPrincipal = new VistaPrincipal();
-                    vistaPrincipal.setVisible(true);
-                }
-//            }
-//        });
-
+        if (vistaPrincipal == null) {
+            vistaPrincipal = new VistaPrincipal();
+            vistaPrincipal.setVisible(true);
+        }
     }
+    
     protected VistaPrincipal vistaPrincipal;
     protected CAutomaticTranslate cautomaticTranslate;
     private CNow cNow;
+    private CTts cTts;
 }

@@ -4,7 +4,7 @@
  */
 package com.rnasystems.projects.translator.main;
 
-import com.rnasystems.api.linet.util.archivos.ArchivoUtil;
+import com.linet.util.file.FileUtil;
 import java.io.File;
 import com.rnasystems.projects.translator.util.TranslatorParameters;
 
@@ -15,7 +15,7 @@ import com.rnasystems.projects.translator.util.TranslatorParameters;
 public class Initialize {
 
     public Initialize() {
-        TranslatorParameters.initializePath(ArchivoUtil.getPathDirectorioEjecucion() + File.separator +"config"+ File.separator +"config.properties");
+        TranslatorParameters.initializePath(FileUtil.getPathFromWhereApplicationIsRunning() + File.separator +"config"+ File.separator +"config.properties");
     }
     
 }

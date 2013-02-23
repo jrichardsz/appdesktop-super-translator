@@ -4,8 +4,7 @@
  */
 package com.rnasystems.projects.translator.main;
 
-import com.rnasystems.api.linet.util.lookAndFeel.WindowUtilities;
-import com.rnasystems.projects.translator.vista.main.VistaPrincipal;
+import com.linet.api.swing.lookandfeel.WindowUtilities;
 
 /**
  *

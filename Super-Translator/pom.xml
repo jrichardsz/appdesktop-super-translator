@@ -18,11 +18,18 @@
     <dependencies>
 
         <dependency>
-            <groupId>com.rnasystems.lib.linet</groupId>
-            <artifactId>LinetLib</artifactId>
-            <version>1.0.0</version>
+            <groupId>com.linet.util</groupId>
+            <artifactId>linet-util</artifactId>
+            <version>1.0.0</version>  
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>com.linet.api.swing</groupId>
+            <artifactId>linet-swing</artifactId>
+            <version>1.0.0</version> 
+            <scope>compile</scope>
+        </dependency>
+        
         <dependency>
             <groupId>de.huxhorn.sulky</groupId>
             <artifactId>de.huxhorn.sulky.3rdparty.jlayer</artifactId>

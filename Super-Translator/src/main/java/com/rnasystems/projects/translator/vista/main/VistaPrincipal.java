@@ -4,25 +4,11 @@
  */
 package com.rnasystems.projects.translator.vista.main;
 
-import com.rnasystems.api.linet.util.swing.JFrameUtil;
-import com.rnasystems.api.linet.util.swing.SwingUtil;
-//import com.rnasystems.projects.translator.core.GoogleUtilTranslator;
-import com.rnasystems.projects.translator.core.UtilTranslator;
+import com.linet.api.swing.JFrameUtil;
+import com.linet.api.swing.SwingUtil;
 import com.rnasystems.projects.translator.vista.Vista;
-import java.awt.Dimension;
-import java.awt.Rectangle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JTextField;
-import javax.swing.Timer;
-import java.awt.Toolkit;
-import java.awt.datatransfer.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.io.InputStream;
-import javazoom.jl.player.Player;
 
 /**
  *
@@ -85,12 +71,6 @@ public class VistaPrincipal extends Vista {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Super Translator 1.0");
 
-        jTextFieldSpanish.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldSpanishActionPerformed(evt);
-            }
-        });
-
         jButtonExit.setText("exit");
         jButtonExit.setToolTipText("Simplemente exit.");
         jButtonExit.addActionListener(new java.awt.event.ActionListener() {
@@ -101,19 +81,9 @@ public class VistaPrincipal extends Vista {
 
         jButtonStart.setText("start");
         jButtonStart.setToolTipText("Una ves presionado este boton, cualquier texto que selecciones y copies se traducira automaticamente.");
-        jButtonStart.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonStartActionPerformed(evt);
-            }
-        });
 
         jButtonNow.setText("now");
         jButtonNow.setToolTipText("Este boton traducira el texto ingresado en el input espaniol");
-        jButtonNow.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonNowActionPerformed(evt);
-            }
-        });
 
         jButtonClean.setText("clean");
         jButtonClean.setToolTipText("Este boton limpia el texto de los 02 inputs.");
@@ -125,11 +95,6 @@ public class VistaPrincipal extends Vista {
 
         jButtonStop.setText("stop");
         jButtonStop.setToolTipText("IMPORTANTE: Presionar este boton cuando no se use la aplicacion. De no hacerlo,  el clipboard del sistema se limpiara ciclicamente, lo que te impedira copiar textos.");
-        jButtonStop.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonStopActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -160,11 +125,6 @@ public class VistaPrincipal extends Vista {
 
         jButtonIngles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/rnasystems/projects/translator/images/ImgFlagUS.png"))); // NOI18N
         jButtonIngles.setToolTipText("Este boton reproduce en forma de audio el texto de el input ingles.");
-        jButtonIngles.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonInglesActionPerformed(evt);
-            }
-        });
 
         jButtonEspaniol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/rnasystems/projects/translator/images/ImgFlagES.png"))); // NOI18N
 
@@ -212,147 +172,11 @@ public class VistaPrincipal extends Vista {
     private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
         System.exit(1);
     }//GEN-LAST:event_jButtonExitActionPerformed
-
-    private void jButtonStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStartActionPerformed
-//        jButtonStart.setEnabled(false);
-//        jTextFieldEnglish.setText("");
-//        jTextFieldSpanish.setText("");
-//        timer.start();
-    }//GEN-LAST:event_jButtonStartActionPerformed
-
-    private void jButtonStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStopActionPerformed
-        jButtonStart.setEnabled(true);
-//        timer.stop();
-    }//GEN-LAST:event_jButtonStopActionPerformed
-
-    private void jButtonNowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNowActionPerformed
-//        try {
-//            traduceSpanishNow();
-//        } catch (Exception ex) {
-//            Logger.getLogger(VistaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-
-    }//GEN-LAST:event_jButtonNowActionPerformed
-
-//    private void traduceSpanishNow() throws Exception {
-//        String texto = jTextFieldSpanish.getText();
-//        texto = limpiaTexto(texto);
-//        try {
-//            jTextFieldEnglish.setText(UtilTranslator.translate(texto, "es", "en"));
-//            jTextFieldSpanish.setText(UtilTranslator.translate(texto, "en", "es"));
-//        } catch (IOException ex) {
-//            ex.printStackTrace();
-//        }
-//    }
-
+	
     private void jButtonCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCleanActionPerformed
-        jTextFieldEnglish.setText("");
-        jTextFieldSpanish.setText("");
+       jTextFieldEnglish.setText("");   
+       jTextFieldSpanish.setText("");   
     }//GEN-LAST:event_jButtonCleanActionPerformed
-
-    private void jButtonInglesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInglesActionPerformed
-//        InputStream inputStream = null;
-//        Player player = null;
-//        try {
-//            String texto = jTextFieldEnglish.getText();
-//            texto = limpiaTexto(texto);
-//            try {
-//                inputStream = UtilTranslator.translateTTS(texto, "en");
-//            } catch (Exception ex) {
-//                Logger.getLogger(VistaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//            player = new Player(inputStream);
-//            player.play();
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        } finally {
-//            try {
-//                inputStream.close();
-//                player.close();
-//            } catch (IOException ex) {
-//                ex.printStackTrace();
-//            }
-//        }
-
-    }//GEN-LAST:event_jButtonInglesActionPerformed
-
-    private void jTextFieldSpanishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSpanishActionPerformed
-//        try {
-//            traduceSpanishNow();
-//        } catch (Exception ex) {
-//            Logger.getLogger(VistaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-    }//GEN-LAST:event_jTextFieldSpanishActionPerformed
-
-//    public void initialize() {
-//
-//        timer = new Timer(1000, new ActionListener() {
-//
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                try {
-//                    // Se obtiene el Clipboard y su contenido
-//                    Clipboard cb = Toolkit.getDefaultToolkit().getSystemClipboard();
-//                    Transferable t = cb.getContents(this);
-//
-//                    // Construimos el DataFlavor correspondiente a String.
-//                    DataFlavor dataFlavorStringJava = new DataFlavor(
-//                            "application/x-java-serialized-object; class=java.lang.String");
-//
-//                    // Si el dato se puede obtener como String, lo obtenemos y
-//                    // lo
-//                    // sacamos por la estándar out.
-//                    if (t.isDataFlavorSupported(dataFlavorStringJava)) {
-//                        String texto = (String) t.getTransferData(dataFlavorStringJava);
-//                        texto = limpiaTexto(texto);
-//                        if (texto != null && !texto.equals("")) {
-//
-//                            if (isFirst) {
-//                                jTextFieldEnglish.setText(UtilTranslator.translate(texto, "es", "en"));
-//                                jTextFieldSpanish.setText(UtilTranslator.translate(texto, "en", "es"));
-//                                clear();
-//                            } else {
-//                                isFirst = true;
-//                                clear();
-//                            }
-//
-//
-//                        }
-//                    }
-//                } catch (Exception ee) {
-//                    ee.printStackTrace();
-//                }
-//            }
-//        });
-//
-//        timer.stop();
-//    }
-
-//    public String limpiaTexto(String input) {
-//        return input.replace("’", "'");
-//    }
-//
-//    public void clear() {
-//        try {
-//
-//            Clipboard cb = Toolkit.getDefaultToolkit().getSystemClipboard();
-//            cb.setContents(new Transferable() {
-//
-//                public DataFlavor[] getTransferDataFlavors() {
-//                    return new DataFlavor[0];
-//                }
-//
-//                public boolean isDataFlavorSupported(DataFlavor flavor) {
-//                    return false;
-//                }
-//
-//                public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException {
-//                    throw new UnsupportedFlavorException(flavor);
-//                }
-//            }, null);
-//        } catch (IllegalStateException e) {
-//        }
-//    }
 
     public JButton getjButtonClean() {
         return jButtonClean;

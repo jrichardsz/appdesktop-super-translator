@@ -73,9 +73,6 @@
     <Component class="javax.swing.JTextField" name="jTextFieldEnglish">
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldSpanish">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldSpanishActionPerformed"/>
-      </Events>
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel1">
 
@@ -124,18 +121,12 @@
             <Property name="text" type="java.lang.String" value="start"/>
             <Property name="toolTipText" type="java.lang.String" value="Una ves presionado este boton, cualquier texto que selecciones y copies se traducira automaticamente."/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonStartActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonNow">
           <Properties>
             <Property name="text" type="java.lang.String" value="now"/>
             <Property name="toolTipText" type="java.lang.String" value="Este boton traducira el texto ingresado en el input espaniol"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonNowActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonClean">
           <Properties>
@@ -151,9 +142,6 @@
             <Property name="text" type="java.lang.String" value="stop"/>
             <Property name="toolTipText" type="java.lang.String" value="IMPORTANTE: Presionar este boton cuando no se use la aplicacion. De no hacerlo,  el clipboard del sistema se limpiara ciclicamente, lo que te impedira copiar textos."/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonStopActionPerformed"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -164,9 +152,6 @@
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Este boton reproduce en forma de audio el texto de el input ingles."/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonInglesActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonEspaniol">
       <Properties>

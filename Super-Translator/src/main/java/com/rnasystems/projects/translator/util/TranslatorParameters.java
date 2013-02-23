@@ -4,7 +4,7 @@
  */
 package com.rnasystems.projects.translator.util;
 
-import com.rnasystems.api.linet.properties.Parameters;
+import com.linet.util.properties.PropertiesReady;
 
 
 
@@ -12,6 +12,6 @@ import com.rnasystems.api.linet.properties.Parameters;
  *
  * @author Richard Osmar Leon Ingaruca
  */
-public class TranslatorParameters extends Parameters{
+public class TranslatorParameters extends PropertiesReady{
     
 }

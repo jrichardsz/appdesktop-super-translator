@@ -69,7 +69,6 @@ public class CNow extends Controler {
         texto = UtilTranslator.limpiaTexto(texto);
         try {
             jTextFieldEnglish.setText(GoogleUtilTranslator.translate(texto, "es", "en"));
-            jTextFieldSpanish.setText(GoogleUtilTranslator.translate(texto, "en", "es"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -79,7 +78,6 @@ public class CNow extends Controler {
         String texto = jTextFieldEnglish.getText();
         texto = UtilTranslator.limpiaTexto(texto);
         try {
-            jTextFieldEnglish.setText(GoogleUtilTranslator.translate(texto, "es", "en"));
             jTextFieldSpanish.setText(GoogleUtilTranslator.translate(texto, "en", "es"));
         } catch (IOException ex) {
             ex.printStackTrace();

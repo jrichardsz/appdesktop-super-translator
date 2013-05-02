@@ -1,150 +1,138 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.rnasystems.projects.translator</groupId>
-    <artifactId>Super-Translator</artifactId>
-    <version>1.0.0</version>
-    <packaging>jar</packaging>
+	<groupId>com.rnasystems.projects.translator</groupId>
+	<artifactId>Super-Translator</artifactId>
+	<version>1.0.0</version>
+	<packaging>jar</packaging>
 
-    <name>Super-Translator</name>
-    <url>http://maven.apache.org</url>
+	<name>Super-Translator</name>
+	<url>http://maven.apache.org</url>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 
-    <dependencies>
+	<dependencies>
 
-        <dependency>
-            <groupId>com.linet.util</groupId>
-            <artifactId>linet-util</artifactId>
-            <version>1.0.0</version>  
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.linet.api.swing</groupId>
-            <artifactId>linet-swing</artifactId>
-            <version>1.0.0</version> 
-            <scope>compile</scope>
-        </dependency>
-        
-        <dependency>
-            <groupId>de.huxhorn.sulky</groupId>
-            <artifactId>de.huxhorn.sulky.3rdparty.jlayer</artifactId>
-            <scope>compile</scope>
-            <version>1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.gtranslat</groupId>
-            <artifactId>gtranslateapi</artifactId>
-            <version>1.0</version>
-        </dependency>
-            
-    </dependencies>
-    
-    
-<!--    <profiles>
-        <profile>
-            <id>development</id>
-            
-        </profile>
-        <profile>
-            <id>profile-B</id>
-            
-        </profile>
-    </profiles>    -->
-    
-    <build>
-        
-        <resources>
-            <resource>
-                <filtering>false</filtering>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>**</include>
-                </includes>
-                <excludes>
-                    <exclude>**/*.java</exclude>
-                </excludes>
-            </resource>
-        
-        </resources> 
-        
-        <plugins>
-        
-            
-<!--Agrega el : lib/xxxxx.jar al manifest-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <configuration>                    
-                    <archive>
-                        <manifest>
-                            <mainClass>com.rnasystems.projects.translator.main.Main</mainClass> 
-                            <addClasspath>true</addClasspath>
-                            <classpathPrefix>lib</classpathPrefix>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin> 
-<!--Copia las librerias al target-->            
-            <plugin>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>copy-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-<!--copia todo lo de la carpeta resources a una carpeta dada            -->
-            <plugin>
-                <artifactId>maven-resources-plugin</artifactId>
-                <executions>
-<!--                    copiar recursos externos:-->                    
-                    <execution>
-                        <id>copy-ext-resources</id>
-                        <phase>compile</phase>                        
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${basedir}/target/</outputDirectory>
-                            <resources>          
-                                <resource>
-                                    <directory>src/main/resources</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                            </resources>              
-                        </configuration>                          
-                    </execution>
-<!--                    copiar recursos : -->
-                    <execution>
-                        <id>copy-int-resources</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${basedir}/</outputDirectory>
-                            <resources>          
-                                <resource>
-                                    <directory>src/main/resources</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                            </resources>              
-                        </configuration>                          
-                    </execution>   
-                </executions>
-            </plugin>                      
-        </plugins>
-    </build>
+		<dependency>
+			<groupId>com.linet.util</groupId>
+			<artifactId>linet-util</artifactId>
+			<version>1.0.0</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.linet.api.swing</groupId>
+			<artifactId>linet-swing</artifactId>
+			<version>1.0.0</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>de.huxhorn.sulky</groupId>
+			<artifactId>de.huxhorn.sulky.3rdparty.jlayer</artifactId>
+			<scope>compile</scope>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.gtranslate</groupId>
+			<artifactId>google-translate-java-api</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+
+		<resources>
+			<resource>
+				<filtering>false</filtering>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+
+		</resources>
+
+		<plugins>
+
+
+			<!--Agrega el : lib/xxxxx.jar al manifest -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>com.rnasystems.projects.translator.main.Main</mainClass>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>lib</classpathPrefix>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+			<!--Copia las librerias al target -->
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/lib</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!--copia todo lo de la carpeta resources a una carpeta dada -->
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<!-- copiar recursos externos: -->
+					<execution>
+						<id>copy-ext-resources</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/resources</directory>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<!-- copiar recursos : -->
+					<execution>
+						<id>copy-int-resources</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/resources</directory>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>

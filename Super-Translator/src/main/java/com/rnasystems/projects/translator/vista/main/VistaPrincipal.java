@@ -25,7 +25,7 @@ public class VistaPrincipal extends Vista {
         inicializaConfiguraciones();
     }
 
-    @Override
+    
     public void inicializaConfiguraciones() {
         setAlwaysOnTop(true);
         JFrameUtil.setIconApp(this);
@@ -36,7 +36,7 @@ public class VistaPrincipal extends Vista {
 //        setSize((int) getSize().getWidth(), height);
     }
 
-    @Override
+    
     public void inicializaActionListenerComponentes() {
         addActionListenerComponentes(jButtonStart);
         addActionListenerComponentes(jButtonNow);

@@ -7,7 +7,7 @@ package com.rnasystems.projects.translator.main;
 import com.linet.util.file.FileUtil;
 import com.rnasystems.projects.translator.controler.now.CNow;
 import com.rnasystems.projects.translator.controler.start.CAutomaticTranslate;
-import com.rnasystems.projects.translator.controler.tts.CTts;
+//import com.rnasystems.projects.translator.controler.tts.CTts;
 import com.rnasystems.projects.translator.util.TranslatorParameters;
 import com.rnasystems.projects.translator.vista.main.VistaPrincipal;
 import java.io.File;
@@ -27,7 +27,7 @@ public class ObjectFactory {
     public void inicializaControlers() {
         cautomaticTranslate = new CAutomaticTranslate(vistaPrincipal);
         cNow = new CNow(vistaPrincipal);
-        cTts = new CTts(vistaPrincipal);
+//        cTts = new CTts(vistaPrincipal);
     }
 
     public void inicializaVista() {
@@ -41,5 +41,5 @@ public class ObjectFactory {
     protected VistaPrincipal vistaPrincipal;
     protected CAutomaticTranslate cautomaticTranslate;
     private CNow cNow;
-    private CTts cTts;
+//    private CTts cTts;
 }

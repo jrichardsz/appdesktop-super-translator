@@ -4,9 +4,6 @@
  */
 package com.rnasystems.projects.translator.core;
 
-import com.gtranslate.Audio;
-import com.gtranslate.Translator;
-import com.rnasystems.projects.translator.util.TranslatorParameters;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.InetSocketAddress;
@@ -16,11 +13,50 @@ import java.net.URLConnection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.gtranslate.Audio;
+import com.gtranslate.Translator;
+import com.gtranslate.context.TranslatorEnvironmentUtil;
+import com.rnasystems.projects.translator.util.TranslatorParameters;
+
 /**
  *
  * @author Richard Osmar Leon Ingaruca - RNASystems
  */
 public class GoogleUtilTranslator {
+	
+	private static Translator translate;
+	
+	static {
+		
+		try {
+			
+			String enableProxy = TranslatorParameters.getProperty("enable.proxy");
+			String proxy = TranslatorParameters.getProperty("enable.proxy");
+			String port = TranslatorParameters.getProperty("enable.proxy");
+			String googleTranslateText = TranslatorParameters.getProperty("enable.proxy");
+			String googleTranslateAudio = TranslatorParameters.getProperty("enable.proxy");
+			String googleTranslateDetect = TranslatorParameters.getProperty("enable.proxy");
+			String locale = TranslatorParameters.getProperty("enable.proxy");
+			
+			TranslatorEnvironmentUtil.initialize(enableProxy, proxy, port, googleTranslateText, googleTranslateAudio, googleTranslateDetect, locale);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		
+	}
+	
+	public static Translator getInstance(){
+		
+		if(translate==null){
+			translate = new Translator();
+		}
+		
+		return translate;
+		
+	}
 
     public static String translate(String palabra, String languajeIni, String languajeEnd) throws IOException, Exception {
 
@@ -30,7 +66,7 @@ public class GoogleUtilTranslator {
             return null;
         }
         
-        Translator translate = Translator.getInstance();
+        Translator translate = getInstance();
         output = translate.translate(palabra, languajeIni, languajeEnd);
         output = extraeSoloTraduccion(output);
         return output;

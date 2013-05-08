@@ -4,11 +4,11 @@
  */
 package com.rnasystems.projects.translator.vista.main;
 
-import com.linet.api.swing.JFrameUtil;
-import com.linet.api.swing.SwingUtil;
-import com.rnasystems.projects.translator.vista.Vista;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+
+import com.linet.api.swing.jframe.JFrameUtil;
+import com.rnasystems.projects.translator.vista.Vista;
 
 /**
  *
@@ -28,8 +28,8 @@ public class VistaPrincipal extends Vista {
     
     public void inicializaConfiguraciones() {
         setAlwaysOnTop(true);
-        JFrameUtil.setIconApp(this);
-        SwingUtil.centrarJFrame(this);
+        JFrameUtil.setPersonalizedIconApp(this);
+        JFrameUtil.centerJFrame(this);
         //resize
 //        Rectangle d = jButtonIngles.getBounds();
 //        int height = (int) d.getY() + (int) d.getHeight() + margen_gui;

@@ -8,7 +8,8 @@ import java.io.InputStreamReader;
 import java.net.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import com.rnasystems.projects.translator.util.TranslatorParameters;
+
+import com.rnasystems.projects.translator.common.util.TranslatorParameters;
 
 /*
  * To change this template, choose Tools | Templates and open the template in
@@ -19,7 +20,7 @@ import com.rnasystems.projects.translator.util.TranslatorParameters;
  * @author rleon
  * http://code.google.com/p/java-google-translate-text-to-speech/source/checkout
  */
-public class UtilTranslator {
+public class NativeUtilTranslator {
 
     public static String toEnglishJson(String palabra) throws IOException, Exception {
         
@@ -173,7 +174,7 @@ public class UtilTranslator {
         return buscado;
     }    
     
-    public static String limpiaTexto(String input) {
+    public static String cleanText(String input) {
         return input.replace("’", "'");
     }    
 

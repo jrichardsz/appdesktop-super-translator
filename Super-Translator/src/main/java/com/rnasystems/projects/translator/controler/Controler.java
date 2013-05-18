@@ -4,15 +4,15 @@
  */
 package com.rnasystems.projects.translator.controler;
 
-import com.rnasystems.projects.translator.vista.Vista;
-import com.rnasystems.projects.translator.vista.main.VistaPrincipal;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JTextField;
-//import com.rnasystems.projects.translator.core.GoogleUtilTranslator;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
+import com.rnasystems.projects.translator.view.View;
+import com.rnasystems.projects.translator.view.impl.VistaPrincipal;
 
 /**
  *
@@ -21,14 +21,14 @@ import java.awt.event.ActionListener;
 public abstract class Controler implements IControler,ActionListener{
 
     public Controler(VistaPrincipal vista) {
-        this.vista = vista;
-        insertaFuncionalidadActionListener();
-        insertaReferenciasComponentes();
+        this.view = vista;
+        insertFunctionalityActionListener();
+        assignInstancesOfView();
         initialize();
     }
 
-    public void insertaFuncionalidadActionListener() {
-        ArrayList<JComponent> actionListenerComponentes = vista.getActionListenerComponentes();
+    public void insertFunctionalityActionListener() {
+        ArrayList<JComponent> actionListenerComponentes = view.getActionListenerComponentes();
         for(JComponent jComponent : actionListenerComponentes){
             if( jComponent instanceof JButton){
                ((JButton)jComponent).addActionListener(this); 
@@ -38,7 +38,7 @@ public abstract class Controler implements IControler,ActionListener{
         }
     }   
         
-    public Vista vista;
+    public View view;
  
     
 }

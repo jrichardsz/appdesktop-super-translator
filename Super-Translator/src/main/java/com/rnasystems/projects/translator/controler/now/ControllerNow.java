@@ -6,8 +6,9 @@ package com.rnasystems.projects.translator.controler.now;
 
 import com.rnasystems.projects.translator.controler.Controler;
 import com.rnasystems.projects.translator.core.GoogleUtilTranslator;
-import com.rnasystems.projects.translator.core.UtilTranslator;
-import com.rnasystems.projects.translator.vista.main.VistaPrincipal;
+import com.rnasystems.projects.translator.core.NativeUtilTranslator;
+import com.rnasystems.projects.translator.view.impl.VistaPrincipal;
+
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 
@@ -15,16 +16,16 @@ import java.io.IOException;
  *
  * @author Richard Osmar Leon Ingaruca - RNASystems
  */
-public class CNow extends Controler {
+public class ControllerNow extends Controler {
 
-    public CNow(VistaPrincipal vista) {
+    public ControllerNow(VistaPrincipal vista) {
         super(vista);
     }
 
-    public void insertaReferenciasComponentes() {
-        jButtonNow = ((VistaPrincipal) vista).getjButtonNow();
-        jTextFieldEnglish = ((VistaPrincipal) vista).getjTextFieldEnglish();
-        jTextFieldSpanish = ((VistaPrincipal) vista).getjTextFieldSpanish();
+    public void assignInstancesOfView() {
+        jButtonNow = ((VistaPrincipal) view).getjButtonNow();
+        jTextFieldEnglish = ((VistaPrincipal) view).getjTextFieldEnglish();
+        jTextFieldSpanish = ((VistaPrincipal) view).getjTextFieldSpanish();
 
     }
 
@@ -38,12 +39,12 @@ public class CNow extends Controler {
                 String spanishText = jTextFieldSpanish.getText();
                 String englishText = jTextFieldEnglish.getText();
                 
-                if(UtilTranslator.esValidoTexto(spanishText)&& UtilTranslator.esValidoTexto(englishText)){
+                if(NativeUtilTranslator.esValidoTexto(spanishText)&& NativeUtilTranslator.esValidoTexto(englishText)){
                     jTextFieldEnglish.setText("Write in a single input, Spanish or English");
                     jTextFieldSpanish.setText("Escribe en un solo input, español o ingles");
-                }else if(UtilTranslator.esValidoTexto(spanishText)){
+                }else if(NativeUtilTranslator.esValidoTexto(spanishText)){
                     traduceSpanishNow();
-                }else if(UtilTranslator.esValidoTexto(englishText)){
+                }else if(NativeUtilTranslator.esValidoTexto(englishText)){
                     traduceEnglishNow();
                 }
             } catch (Exception ex) {
@@ -65,10 +66,10 @@ public class CNow extends Controler {
     }
     
     private void traduceSpanishNow() throws Exception {
-        String texto = jTextFieldSpanish.getText();
-        texto = UtilTranslator.limpiaTexto(texto);
+        String text = jTextFieldSpanish.getText();
+        text = NativeUtilTranslator.cleanText(text);
         try {
-            jTextFieldEnglish.setText(GoogleUtilTranslator.translate(texto, "es", "en"));
+            jTextFieldEnglish.setText(GoogleUtilTranslator.translate(text, "es", "en"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -76,7 +77,7 @@ public class CNow extends Controler {
     
     private void traduceEnglishNow() throws Exception {
         String texto = jTextFieldEnglish.getText();
-        texto = UtilTranslator.limpiaTexto(texto);
+        texto = NativeUtilTranslator.cleanText(texto);
         try {
             jTextFieldSpanish.setText(GoogleUtilTranslator.translate(texto, "en", "es"));
         } catch (IOException ex) {
@@ -86,4 +87,8 @@ public class CNow extends Controler {
     private javax.swing.JButton jButtonNow;
     private javax.swing.JTextField jTextFieldEnglish;
     private javax.swing.JTextField jTextFieldSpanish;
+	public void insertFunctionalityActionListener() {
+		// TODO Auto-generated method stub
+		
+	}
 }

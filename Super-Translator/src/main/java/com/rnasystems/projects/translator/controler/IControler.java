@@ -4,7 +4,6 @@
  */
 package com.rnasystems.projects.translator.controler;
 
-import javax.swing.JFrame;
 
 /**
  *
@@ -12,8 +11,8 @@ import javax.swing.JFrame;
  */
 public interface IControler {
     
-    public void insertaFuncionalidadActionListener();
-    public void insertaReferenciasComponentes();
+    public void insertFunctionalityActionListener();
+    public void assignInstancesOfView();
     public void initialize();
     
 }

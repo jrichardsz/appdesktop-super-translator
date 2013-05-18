@@ -6,9 +6,9 @@ package com.rnasystems.projects.translator.controler.start;
 
 import com.rnasystems.projects.translator.controler.Controler;
 import com.rnasystems.projects.translator.core.GoogleUtilTranslator;
-import com.rnasystems.projects.translator.vista.main.VistaPrincipal;
+import com.rnasystems.projects.translator.view.impl.VistaPrincipal;
 //import com.rnasystems.projects.translator.core.GoogleUtilTranslator;
-import com.rnasystems.projects.translator.core.UtilTranslator;
+import com.rnasystems.projects.translator.core.NativeUtilTranslator;
 import javax.swing.Timer;
 import java.awt.Toolkit;
 import java.awt.datatransfer.*;
@@ -21,17 +21,17 @@ import javax.swing.JTextField;
  *
  * @author Richard Osmar Leon Ingaruca - RNASystems
  */
-public class CAutomaticTranslate extends Controler {
+public class ControllerStartStop extends Controler {
 
-    public CAutomaticTranslate(VistaPrincipal vista) {
+    public ControllerStartStop(VistaPrincipal vista) {
         super(vista);
     }
 
-    public void insertaReferenciasComponentes() {
-        jTextFieldEnglish = ((VistaPrincipal) vista).getjTextFieldEnglish();
-        jTextFieldSpanish = ((VistaPrincipal) vista).getjTextFieldSpanish();
-        jButtonStart = ((VistaPrincipal) vista).getjButtonStart();
-        jButtonStop = ((VistaPrincipal) vista).getjButtonStop();
+    public void assignInstancesOfView() {
+        jTextFieldEnglish = ((VistaPrincipal) view).getjTextFieldEnglish();
+        jTextFieldSpanish = ((VistaPrincipal) view).getjTextFieldSpanish();
+        jButtonStart = ((VistaPrincipal) view).getjButtonStart();
+        jButtonStop = ((VistaPrincipal) view).getjButtonStop();
     }
 
     public void initialize() {
@@ -71,7 +71,7 @@ public class CAutomaticTranslate extends Controler {
                     // sacamos por la estándar out.
                     if (t.isDataFlavorSupported(dataFlavorStringJava)) {
                         String texto = (String) t.getTransferData(dataFlavorStringJava);
-                        texto = UtilTranslator.limpiaTexto(texto);
+                        texto = NativeUtilTranslator.cleanText(texto);
                         if (texto != null && !texto.equals("")) {
 
                             if (isFirst) {

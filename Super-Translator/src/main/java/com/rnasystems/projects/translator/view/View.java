@@ -2,10 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.rnasystems.projects.translator.vista;
+package com.rnasystems.projects.translator.view;
 
-import java.awt.HeadlessException;
 import java.util.ArrayList;
+
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
@@ -13,10 +13,14 @@ import javax.swing.JFrame;
  *
  * @author Richard Osmar Leon Ingaruca - RNASystems
  */
-public abstract class Vista extends JFrame implements IVista {
+public abstract class View extends JFrame implements IView {
 
 
-    public void addActionListenerComponentes(JComponent actionListenerComponente) {        
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public void addActionListenerComponentes(JComponent actionListenerComponente) {        
         getInstanceActionListenerComponentes().add(actionListenerComponente);
     }
 

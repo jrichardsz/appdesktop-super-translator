@@ -6,14 +6,14 @@ package com.rnasystems.projects.translator.context;
 
 import java.io.File;
 
-import com.gtranslate.context.TranslatorEnvironmentUtil;
+import com.gtranslate.context.TranslateEnvironment;
 import com.linet.util.file.FileUtil;
 import com.rnasystems.projects.translator.common.util.TranslatorConstants;
 import com.rnasystems.projects.translator.common.util.TranslatorParameters;
 import com.rnasystems.projects.translator.controler.now.ControllerNow;
 import com.rnasystems.projects.translator.controler.start.ControllerStartStop;
 import com.rnasystems.projects.translator.controler.tts.ControllerTTS;
-import com.rnasystems.projects.translator.view.impl.VistaPrincipal;
+import com.rnasystems.projects.translator.view.impl.TranslatorUI;
 
 /**
  *
@@ -21,45 +21,22 @@ import com.rnasystems.projects.translator.view.impl.VistaPrincipal;
  */
 public class ControllerFactory {
 
-    public void execute() throws Exception {
-        TranslatorParameters.initializePath(FileUtil.getPathFromWhereApplicationIsRunning() + File.separator + "config" + File.separator + "config.properties");
-        initializeParametersTranslator();
-        inicializaVista();
-        inicializaControlers();
-    }
-    
-    public void initializeParametersTranslator() throws Exception{
-    	String enableProxy = TranslatorParameters.getProperty(TranslatorConstants.TRANSLATE_ENABLE_PROXY);
-    	String proxy = TranslatorParameters.getProperty(TranslatorConstants.TRANSLATE_PROXY);
-    	String port= TranslatorParameters.getProperty(TranslatorConstants.TRANSLATE_PORT);
-    	String googleTranslateText = TranslatorParameters.getProperty(TranslatorConstants.TRANSLATE_GOOGLE_TRANSLATE_TEXT);
-    	String googleTranslateAudio = TranslatorParameters.getProperty(TranslatorConstants.TRANSLATE_GOOGLE_TRANSLATE_AUDIO);
-    	String googleTranslateDetect = TranslatorParameters.getProperty(TranslatorConstants.TRANSLATE_GOOGLE_TRANSLATE_DETECT);
-    	String locale = TranslatorParameters.getProperty(TranslatorConstants.TRANSLATE_LOCALE);
-    	
-    	TranslatorEnvironmentUtil.initialize(enableProxy, proxy, port, googleTranslateText, googleTranslateAudio, googleTranslateDetect, locale);
-    }
+	public ControllerFactory(TranslatorUI translatorUI){
+		this.translatorUI = translatorUI;
+	}
 
-    public void inicializaControlers() {
-        cautomaticTranslate = new ControllerStartStop(vistaPrincipal);
-        cNow = new ControllerNow(vistaPrincipal);
-        controllerTTS = new ControllerTTS(vistaPrincipal);
-    }
-
-    public void inicializaVista() {
-
-        if (vistaPrincipal == null) {
-            vistaPrincipal = new VistaPrincipal();
-            vistaPrincipal.setVisible(true);
-        }
+    public void init() {
+        controllerStartStop = new ControllerStartStop(translatorUI);
+        cNow = new ControllerNow(translatorUI);
+        controllerTTS = new ControllerTTS(translatorUI);
     }
 
     public ControllerStartStop getCautomaticTranslate() {
-		return cautomaticTranslate;
+		return controllerStartStop;
 	}
 
 	public void setCautomaticTranslate(ControllerStartStop cautomaticTranslate) {
-		this.cautomaticTranslate = cautomaticTranslate;
+		this.controllerStartStop = cautomaticTranslate;
 	}
 
 	public ControllerNow getcNow() {
@@ -78,11 +55,8 @@ public class ControllerFactory {
 		this.controllerTTS = controllerTTS;
 	}
 
-
-
-
-	protected VistaPrincipal vistaPrincipal;
-    protected ControllerStartStop cautomaticTranslate;
+	protected TranslatorUI translatorUI;
+    protected ControllerStartStop controllerStartStop;
     private ControllerNow cNow;
     private ControllerTTS controllerTTS;
 }

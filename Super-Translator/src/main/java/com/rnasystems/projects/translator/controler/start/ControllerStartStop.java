@@ -4,18 +4,22 @@
  */
 package com.rnasystems.projects.translator.controler.start;
 
-import com.rnasystems.projects.translator.controler.Controler;
-import com.rnasystems.projects.translator.core.GoogleUtilTranslator;
-import com.rnasystems.projects.translator.view.impl.VistaPrincipal;
-//import com.rnasystems.projects.translator.core.GoogleUtilTranslator;
-import com.rnasystems.projects.translator.core.NativeUtilTranslator;
-import javax.swing.Timer;
 import java.awt.Toolkit;
-import java.awt.datatransfer.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
+import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import javax.swing.Timer;
+
+import com.rnasystems.projects.translator.controler.Controler;
+import com.rnasystems.projects.translator.core.GoogleUtilTranslator;
+import com.rnasystems.projects.translator.view.impl.TranslatorUI;
+//import com.rnasystems.projects.translator.core.GoogleUtilTranslator;
 
 /**
  *
@@ -23,19 +27,26 @@ import javax.swing.JTextField;
  */
 public class ControllerStartStop extends Controler {
 
-    public ControllerStartStop(VistaPrincipal vista) {
+    public ControllerStartStop(TranslatorUI vista) {
         super(vista);
     }
 
     public void assignInstancesOfView() {
-        jTextFieldEnglish = ((VistaPrincipal) view).getjTextFieldEnglish();
-        jTextFieldSpanish = ((VistaPrincipal) view).getjTextFieldSpanish();
-        jButtonStart = ((VistaPrincipal) view).getjButtonStart();
-        jButtonStop = ((VistaPrincipal) view).getjButtonStop();
+        jTextFieldEnglish = ((TranslatorUI) view).getjTextFieldEnglish();
+        jTextFieldSpanish = ((TranslatorUI) view).getjTextFieldSpanish();
+        jButtonStart = ((TranslatorUI) view).getjButtonStart();
+        jButtonStop = ((TranslatorUI) view).getjButtonStop();
     }
 
-    public void initialize() {
-
+	@Override
+	public void registerUIComponentsToActionListener(){
+		addActionListenerComponent(jButtonStart);
+		addActionListenerComponent(jButtonStop);
+		addActionListenerComponent(jTextFieldEnglish);
+		addActionListenerComponent(jTextFieldSpanish);	
+	}
+    
+    public void setup() {
         inicializaTimer();
     }
 
@@ -67,11 +78,10 @@ public class ControllerStartStop extends Controler {
                             "application/x-java-serialized-object; class=java.lang.String");
 
                     // Si el dato se puede obtener como String, lo obtenemos y
-                    // lo
-                    // sacamos por la estándar out.
+                    // lo sacamos por la estándar out.
                     if (t.isDataFlavorSupported(dataFlavorStringJava)) {
                         String texto = (String) t.getTransferData(dataFlavorStringJava);
-                        texto = NativeUtilTranslator.cleanText(texto);
+                        texto = GoogleUtilTranslator.cleanText(texto);
                         if (texto != null && !texto.equals("")) {
 
                             if (isFirst) {
@@ -124,4 +134,5 @@ public class ControllerStartStop extends Controler {
     private JButton jButtonStop;
     private Timer timer;
     private boolean isFirst = false;
+
 }

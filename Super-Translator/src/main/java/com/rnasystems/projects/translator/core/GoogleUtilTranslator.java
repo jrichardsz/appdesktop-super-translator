@@ -18,6 +18,10 @@ public class GoogleUtilTranslator {
 	private static Translator translate;
 	private static Audio audio;
 	
+    public static String cleanText(String input) {
+        return input.replace("’", "'");
+    }    
+	
 	public static Translator getTranslatorInstance(){
 		
 		if(translate==null){
@@ -55,6 +59,6 @@ public class GoogleUtilTranslator {
     public static void executeTTS(String palabra, String languaje) throws IOException, Exception {
 
         Audio audio = getAudioInstance();
-        audio.play(palabra, languaje);
+//        audio.play(palabra, languaje);
     }
 }

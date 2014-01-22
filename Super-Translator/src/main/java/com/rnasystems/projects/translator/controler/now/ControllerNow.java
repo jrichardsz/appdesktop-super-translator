@@ -4,13 +4,13 @@
  */
 package com.rnasystems.projects.translator.controler.now;
 
+import java.awt.event.ActionEvent;
+import java.io.IOException;
+
 import com.rnasystems.projects.translator.controler.Controler;
 import com.rnasystems.projects.translator.core.GoogleUtilTranslator;
 import com.rnasystems.projects.translator.core.NativeUtilTranslator;
-import com.rnasystems.projects.translator.view.impl.VistaPrincipal;
-
-import java.awt.event.ActionEvent;
-import java.io.IOException;
+import com.rnasystems.projects.translator.view.impl.TranslatorUI;
 
 /**
  *
@@ -18,18 +18,25 @@ import java.io.IOException;
  */
 public class ControllerNow extends Controler {
 
-    public ControllerNow(VistaPrincipal vista) {
+    public ControllerNow(TranslatorUI vista) {
         super(vista);
     }
 
     public void assignInstancesOfView() {
-        jButtonNow = ((VistaPrincipal) view).getjButtonNow();
-        jTextFieldEnglish = ((VistaPrincipal) view).getjTextFieldEnglish();
-        jTextFieldSpanish = ((VistaPrincipal) view).getjTextFieldSpanish();
+        jButtonNow = ((TranslatorUI) view).getjButtonNow();
+        jTextFieldEnglish = ((TranslatorUI) view).getjTextFieldEnglish();
+        jTextFieldSpanish = ((TranslatorUI) view).getjTextFieldSpanish();
 
     }
+    
+	@Override
+	public void registerUIComponentsToActionListener(){
+		addActionListenerComponent(jButtonNow);
+		addActionListenerComponent(jTextFieldEnglish);
+		addActionListenerComponent(jTextFieldSpanish);		
+	}
 
-    public void initialize() {
+    public void setup() {
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -67,7 +74,7 @@ public class ControllerNow extends Controler {
     
     private void traduceSpanishNow() throws Exception {
         String text = jTextFieldSpanish.getText();
-        text = NativeUtilTranslator.cleanText(text);
+        text = GoogleUtilTranslator.cleanText(text);
         try {
             jTextFieldEnglish.setText(GoogleUtilTranslator.translate(text, "es", "en"));
         } catch (IOException ex) {
@@ -77,18 +84,16 @@ public class ControllerNow extends Controler {
     
     private void traduceEnglishNow() throws Exception {
         String texto = jTextFieldEnglish.getText();
-        texto = NativeUtilTranslator.cleanText(texto);
+        texto = GoogleUtilTranslator.cleanText(texto);
         try {
             jTextFieldSpanish.setText(GoogleUtilTranslator.translate(texto, "en", "es"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-    }    
+    }  
+    
     private javax.swing.JButton jButtonNow;
     private javax.swing.JTextField jTextFieldEnglish;
     private javax.swing.JTextField jTextFieldSpanish;
-	public void insertFunctionalityActionListener() {
-		// TODO Auto-generated method stub
-		
-	}
+
 }

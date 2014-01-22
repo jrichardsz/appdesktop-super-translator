@@ -11,6 +11,8 @@ import javax.swing.JOptionPane;
 
 import com.linet.api.swing.lookandfeel.WindowUtilities;
 import com.rnasystems.projects.translator.context.ControllerFactory;
+import com.rnasystems.projects.translator.core.SystemEnvironment;
+import com.rnasystems.projects.translator.view.impl.TranslatorUI;
 
 /**
  *
@@ -23,7 +25,9 @@ public class Main {
      * @throws Exception 
      */
     public static void main(String args[]) throws Exception {
-        /*
+        
+    	SystemEnvironment.init();
+    	/*
          * Set the Nimbus look and feel
          */
     	
@@ -36,7 +40,13 @@ public class Main {
             public void run() {
 
                 try {
-					new ControllerFactory().execute();
+                	
+                	TranslatorUI  translatorUI = new TranslatorUI();
+                    translatorUI.setVisible(true);
+                    
+                    ControllerFactory controllerFactory = new ControllerFactory(translatorUI);
+                    controllerFactory.init();
+					
 				} catch (Exception ex) {
 					ex.printStackTrace();
 					StringWriter errors = new StringWriter();

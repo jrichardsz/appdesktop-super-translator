@@ -13,6 +13,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<buildname>Super-Translator</buildname>
 	</properties>
 
 	<dependencies>
@@ -25,7 +26,7 @@
 		<dependency>
 			<groupId>com.linet.api.swing</groupId>
 			<artifactId>linet-swing</artifactId>
-			<version>1.0.0</version>
+			<version>1.0.1</version>
 		</dependency>
 
 		<dependency>
@@ -42,7 +43,7 @@
 	</dependencies>
 
 	<build>
-
+		<finalName>${buildname}</finalName>
 		<resources>
 			<resource>
 				<filtering>false</filtering>
@@ -57,10 +58,23 @@
 
 		</resources>
 
+		<!-- ################################################################ -->
+		<!-- Task for prepare app folder with executable files -->
+		<!-- ################################################################ -->
+
 		<plugins>
 
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
 
-			<!--Agrega el : lib/xxxxx.jar al manifest -->
+
+			<!--add : lib/xyz.jar to manifest -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
@@ -74,7 +88,8 @@
 					</archive>
 				</configuration>
 			</plugin>
-			<!--Copia las librerias al target -->
+
+			<!--copy lib folder from target to app -->
 			<plugin>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<executions>
@@ -84,51 +99,30 @@
 							<goal>copy-dependencies</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${project.build.directory}/lib</outputDirectory>
+							<outputDirectory>${basedir}/app/lib</outputDirectory>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
-			<!--copia todo lo de la carpeta resources a una carpeta dada -->
+
+			<!--copy executable jar from target to app -->
 			<plugin>
-				<artifactId>maven-resources-plugin</artifactId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<configuration>
+					<tasks>
+						<copy file="${basedir}/target/${buildname}.jar" tofile="${basedir}/app/${buildname}.jar" />
+					</tasks>
+				</configuration>
 				<executions>
-					<!-- copiar recursos externos: -->
 					<execution>
-						<id>copy-ext-resources</id>
-						<phase>compile</phase>
+						<phase>package</phase>
 						<goals>
-							<goal>copy-resources</goal>
+							<goal>run</goal>
 						</goals>
-						<configuration>
-							<outputDirectory>${basedir}/target/</outputDirectory>
-							<resources>
-								<resource>
-									<directory>src/main/resources</directory>
-									<filtering>true</filtering>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-					<!-- copiar recursos : -->
-					<execution>
-						<id>copy-int-resources</id>
-						<phase>compile</phase>
-						<goals>
-							<goal>copy-resources</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>${basedir}/</outputDirectory>
-							<resources>
-								<resource>
-									<directory>src/main/resources</directory>
-									<filtering>true</filtering>
-								</resource>
-							</resources>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>
+
 		</plugins>
 	</build>
 

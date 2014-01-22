@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 
 import com.rnasystems.projects.translator.controler.Controler;
 import com.rnasystems.projects.translator.core.GoogleUtilTranslator;
-import com.rnasystems.projects.translator.view.impl.VistaPrincipal;
+import com.rnasystems.projects.translator.view.impl.TranslatorUI;
 
 /**
  *
@@ -16,19 +16,25 @@ import com.rnasystems.projects.translator.view.impl.VistaPrincipal;
  */
 public class ControllerTTS extends Controler {
 
-    public ControllerTTS(VistaPrincipal vista) {
+    public ControllerTTS(TranslatorUI vista) {
         super(vista);
     }
 
     public void assignInstancesOfView() {
-        jButtonEspaniol = ((VistaPrincipal) view).getjButtonEspaniol();
-        jButtonIngles = ((VistaPrincipal) view).getjButtonIngles();
-        jTextFieldEnglish = ((VistaPrincipal) view).getjTextFieldEnglish();
-        jTextFieldSpanish = ((VistaPrincipal) view).getjTextFieldSpanish();
+        jButtonEspaniol = ((TranslatorUI) view).getjButtonEspaniol();
+        jButtonIngles = ((TranslatorUI) view).getjButtonIngles();
+        jTextFieldEnglish = ((TranslatorUI) view).getjTextFieldEnglish();
+        jTextFieldSpanish = ((TranslatorUI) view).getjTextFieldSpanish();
 
     }
 
-    public void initialize() {
+	@Override
+	public void registerUIComponentsToActionListener(){
+		addActionListenerComponent(jButtonEspaniol);
+		addActionListenerComponent(jButtonIngles);
+	}
+
+    public void setup() {
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -60,4 +66,5 @@ public class ControllerTTS extends Controler {
     private javax.swing.JButton jButtonIngles;
     private javax.swing.JTextField jTextFieldEnglish;
     private javax.swing.JTextField jTextFieldSpanish;
+
 }

@@ -11,8 +11,9 @@ package com.rnasystems.projects.translator.controler;
  */
 public interface IControler {
     
-    public void insertFunctionalityActionListener();
+    public void initializeFunctionalityActionListener();
+    public void registerUIComponentsToActionListener();
     public void assignInstancesOfView();
-    public void initialize();
+    public void setup();
     
 }

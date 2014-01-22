@@ -14,43 +14,28 @@ import com.rnasystems.projects.translator.view.View;
  *
  * @author Richard Osmar Leon Ingaruca
  */
-public class VistaPrincipal extends View {
+public class TranslatorUI extends View {
 
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	/**
-     * Creates new form SuperJTextfield
-     */
-    public VistaPrincipal() {
-        initComponents();
-        inicializaActionListenerComponentes();
-        inicializaConfiguraciones();
-    }
 
+    public TranslatorUI() {
+    	super();
+    }
     
-    public void inicializaConfiguraciones() {
+    public void setup() {
         setAlwaysOnTop(true);
-        JFrameUtil.setPersonalizedIconApp(this);
+        try{
+			JFrameUtil.setIconApp(this,"/com/rnasystems/projects/translator/images/ico.png");
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+        
         JFrameUtil.centerJFrame(this);
-        //resize
-//        Rectangle d = jButtonIngles.getBounds();
-//        int height = (int) d.getY() + (int) d.getHeight() + margen_gui;
-//        setSize((int) getSize().getWidth(), height);
     }
 
     
-    public void inicializaActionListenerComponentes() {
-        addActionListenerComponentes(jButtonStart);
-        addActionListenerComponentes(jButtonNow);
-        addActionListenerComponentes(jButtonStop);
-        addActionListenerComponentes(jButtonEspaniol);
-        addActionListenerComponentes(jButtonIngles);
-        addActionListenerComponentes(jTextFieldEnglish);
-        addActionListenerComponentes(jTextFieldSpanish);
 
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -59,7 +44,7 @@ public class VistaPrincipal extends View {
      */
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    public void initComponents() {
 
         jTextFieldEnglish = new javax.swing.JTextField();
         jTextFieldSpanish = new javax.swing.JTextField();

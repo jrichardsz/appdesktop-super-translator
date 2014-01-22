@@ -1,11 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.rnasystems.projects.translator.view;
 
-import java.util.ArrayList;
-import javax.swing.JComponent;
 
 /**
  *
@@ -13,12 +7,7 @@ import javax.swing.JComponent;
  */
 public interface IView {
     
-    public void addActionListenerComponentes( JComponent actionListenerComponente);
-    
-    public ArrayList<JComponent> getInstanceActionListenerComponentes();    
-    
-    public void inicializaActionListenerComponentes();  
-    
-    public void inicializaConfiguraciones();      
+	public void initComponents();
+	public void setup();
     
 }

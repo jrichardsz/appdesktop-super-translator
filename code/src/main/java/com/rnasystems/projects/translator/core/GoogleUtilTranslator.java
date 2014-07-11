@@ -4,7 +4,7 @@
  */
 package com.rnasystems.projects.translator.core;
 
-import java.io.IOException;
+import java.io.*;
 
 import com.gtranslate.Audio;
 import com.gtranslate.Translator;
@@ -56,9 +56,10 @@ public class GoogleUtilTranslator {
         return output;
     }
 
-    public static void executeTTS(String palabra, String languaje) throws IOException, Exception {
+    public static void executeTTS(String text, String languageOutput) throws IOException, Exception {
 
         Audio audio = getAudioInstance();
-//        audio.play(palabra, languaje);
+        InputStream sound = audio.getAudio(text,languageOutput);
+        audio.play(sound);
     }
 }

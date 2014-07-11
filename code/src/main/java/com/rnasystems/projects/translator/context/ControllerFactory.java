@@ -4,16 +4,10 @@
  */
 package com.rnasystems.projects.translator.context;
 
-import java.io.File;
-
-import com.gtranslate.context.TranslateEnvironment;
-import com.linet.util.file.FileUtil;
-import com.rnasystems.projects.translator.common.util.TranslatorConstants;
-import com.rnasystems.projects.translator.common.util.TranslatorParameters;
-import com.rnasystems.projects.translator.controler.now.ControllerNow;
-import com.rnasystems.projects.translator.controler.start.ControllerStartStop;
-import com.rnasystems.projects.translator.controler.tts.ControllerTTS;
-import com.rnasystems.projects.translator.view.impl.TranslatorUI;
+import com.rnasystems.projects.translator.controler.now.*;
+import com.rnasystems.projects.translator.controler.start.*;
+import com.rnasystems.projects.translator.controler.tts.*;
+import com.rnasystems.projects.translator.view.impl.*;
 
 /**
  *

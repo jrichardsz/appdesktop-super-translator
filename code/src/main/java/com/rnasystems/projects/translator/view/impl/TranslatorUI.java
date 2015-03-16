@@ -4,11 +4,14 @@
  */
 package com.rnasystems.projects.translator.view.impl;
 
-import javax.swing.JButton;
-import javax.swing.JTextField;
+import java.awt.*;
+import java.awt.event.*;
+import java.net.*;
 
-import com.linet.api.swing.jframe.JFrameUtil;
-import com.rnasystems.projects.translator.view.View;
+import javax.swing.*;
+
+import com.linet.api.swing.jframe.*;
+import com.rnasystems.projects.translator.view.*;
 
 /**
  *
@@ -32,10 +35,38 @@ public class TranslatorUI extends View {
 		}
         
         JFrameUtil.centerJFrame(this);
+        addSignature();
     }
 
     
-
+	public void addSignature(){
+		setLayout(null);
+		
+		JLabel jLabel = new JLabel();
+		jLabel.setText("Made By JRICHARDSZ");
+		jLabel.setFont(new Font("Serif", Font.PLAIN, 10));
+		jLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));		
+		
+		Point p = jTextFieldEnglish.getLocation();
+		Dimension d = jTextFieldEnglish.getSize();		
+		jLabel.setBounds((int)p.getX(),(int)p.getY()+(int)d.getHeight()-3,(int)d.getWidth(),20);
+		this.add(jLabel);
+		goWebsite(jLabel);
+		 
+	}
+	
+	private void goWebsite(JLabel website) {
+        website.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                try {
+                    Desktop.getDesktop().browse(new URI("https://github.com/jrichardsz/appdesktop-super-translator"));
+                } catch (Exception ex) {
+                    //Do nothing
+                }
+            }
+        });
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

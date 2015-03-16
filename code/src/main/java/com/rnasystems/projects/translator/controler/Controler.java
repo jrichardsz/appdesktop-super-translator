@@ -3,9 +3,7 @@ package com.rnasystems.projects.translator.controler;
 
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 import com.rnasystems.projects.translator.view.View;
 
@@ -40,6 +38,8 @@ public abstract class Controler implements IControler,ActionListener{
         		 ((JButton)jComponent).addActionListener(this); 
         	}else if(jComponent instanceof JTextField){
         		((JTextField)jComponent).addActionListener(this);
+        	}else if(jComponent instanceof JCheckBox){
+        		((JCheckBox)jComponent).addActionListener(this);
         	}
         }
     }   

@@ -20,6 +20,9 @@ Fast Translator will help you translate words and phrases instantly.
 
 Practically if you think of a word, this already translated!
 
+##Download
+https://github.com/jrichardsz/appdesktop-super-translator/archive/master.zip
+
 ##Features
 The app currently provides the following functionality,
 

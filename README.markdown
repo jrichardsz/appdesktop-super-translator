@@ -1,4 +1,5 @@
 #Super Translator
+https://www.youtube.com/watch?v=Nk1hTzvfmJ8
 
 This is the project that translates from English <---> Spanish in a fast using java and google. 
 
@@ -19,6 +20,9 @@ Since it uses the Google translation engine, this application needs and an inter
 Fast Translator will help you translate words and phrases instantly.
 
 Practically if you think of a word, this already translated!
+
+##Download
+https://github.com/jrichardsz/appdesktop-super-translator/archive/master.zip
 
 ##Features
 The app currently provides the following functionality,

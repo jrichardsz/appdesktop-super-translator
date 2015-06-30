@@ -4,13 +4,14 @@
  */
 package com.rnasystems.projects.translator.controler.now;
 
-import java.awt.event.ActionEvent;
-import java.io.IOException;
+import java.awt.event.*;
+import java.io.*;
 
-import com.rnasystems.projects.translator.controler.Controler;
-import com.rnasystems.projects.translator.core.GoogleUtilTranslator;
-import com.rnasystems.projects.translator.core.NativeUtilTranslator;
-import com.rnasystems.projects.translator.view.impl.TranslatorUI;
+import com.rnasystems.projects.translator.common.util.*;
+import com.rnasystems.projects.translator.controler.*;
+import com.rnasystems.projects.translator.core.*;
+import com.rnasystems.projects.translator.snippet.*;
+import com.rnasystems.projects.translator.view.impl.*;
 
 /**
  *
@@ -77,8 +78,9 @@ public class ControllerNow extends Controler {
         text = GoogleUtilTranslator.cleanText(text);
         try {
             jTextFieldEnglish.setText(GoogleUtilTranslator.translate(text, "es", "en"));
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        } catch (Exception e) {
+            System.out.println(e.getCause().getMessage());
+            check503CodeError(e);
         }
     } 
     
@@ -88,9 +90,18 @@ public class ControllerNow extends Controler {
         try {
             jTextFieldSpanish.setText(GoogleUtilTranslator.translate(texto, "en", "es"));
         } catch (IOException ex) {
-            ex.printStackTrace();
+            System.out.println(ex.getCause().getMessage());
+            check503CodeError(ex);
         }
     }  
+    
+    private void check503CodeError(Exception e) throws Exception{
+    	String coderrror503 = TranslatorParameters.getProperty(TranslatorConstants.GOOGLE_CAPTCHA);
+    	if(e.getCause().getMessage().contains(coderrror503)){
+    		GoogleHttpCodeError503 codeError503 = new GoogleHttpCodeError503();
+    		codeError503.resolve(view,e);
+    	}  
+    }
     
     private javax.swing.JButton jButtonNow;
     private javax.swing.JTextField jTextFieldEnglish;

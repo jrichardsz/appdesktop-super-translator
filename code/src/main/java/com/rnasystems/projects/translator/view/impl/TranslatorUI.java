@@ -7,6 +7,7 @@ package com.rnasystems.projects.translator.view.impl;
 import java.awt.*;
 import java.awt.event.*;
 import java.net.*;
+import java.util.*;
 
 import javax.swing.*;
 
@@ -35,37 +36,6 @@ public class TranslatorUI extends View {
 		}
         
         JFrameUtil.centerJFrame(this);
-        addSignature();
-    }
-
-    
-	public void addSignature(){
-		setLayout(null);
-		
-		JLabel jLabel = new JLabel();
-		jLabel.setText("Made By JRICHARDSZ");
-		jLabel.setFont(new Font("Serif", Font.PLAIN, 10));
-		jLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));		
-		
-		Point p = jTextFieldEnglish.getLocation();
-		Dimension d = jTextFieldEnglish.getSize();		
-		jLabel.setBounds((int)p.getX(),(int)p.getY()+(int)d.getHeight()-3,(int)d.getWidth(),20);
-		this.add(jLabel);
-		goWebsite(jLabel);
-		 
-	}
-	
-	private void goWebsite(JLabel website) {
-        website.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                try {
-                    Desktop.getDesktop().browse(new URI("https://github.com/jrichardsz/appdesktop-super-translator"));
-                } catch (Exception ex) {
-                    //Do nothing
-                }
-            }
-        });
     }
 
     /**
@@ -76,11 +46,28 @@ public class TranslatorUI extends View {
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     public void initComponents() {
+    	
+    	addComponentListener(new ComponentAdapter() {
+
+    	    @Override
+    	    public void componentResized(ComponentEvent e) {
+    	        setSize(new Dimension(getWidth(), getMinimunHeith()));
+    	        super.componentResized(e);
+    	    }
+
+    	});
 
         jTextFieldEnglish = new javax.swing.JTextField();
         jTextFieldSpanish = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jButtonExit = new javax.swing.JButton();
+        JButton jButtonBy = new JButton() {
+			private static final long serialVersionUID=1L;
+
+			public Point getToolTipLocation(MouseEvent e) {
+              return getRandomLocation();
+            }
+          };
         jButtonStart = new javax.swing.JButton();
         jButtonNow = new javax.swing.JButton();
         jButtonClean = new javax.swing.JButton();
@@ -98,6 +85,20 @@ public class TranslatorUI extends View {
                 jButtonExitActionPerformed(evt);
             }
         });
+        
+        jButtonBy.setText("<code>");
+        jButtonBy.setToolTipText("<html><img src=\"" + TranslatorUI.class.getResource("/com/rnasystems/projects/translator/images/jrichardsz.png")
+                + "\">");
+        jButtonBy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	try{
+					Desktop.getDesktop().browse(new URI("https://github.com/jrichardsz/appdesktop-super-translator"));
+				}
+				catch(Exception e){
+					e.printStackTrace();
+				}
+            }
+        });        
 
         jButtonStart.setText("start");
         jButtonStart.setToolTipText("Una ves presionado este boton, cualquier texto que selecciones y copies se traducira automaticamente.");
@@ -131,6 +132,8 @@ public class TranslatorUI extends View {
                 .addComponent(jButtonStop)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonExit)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonBy)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -140,6 +143,7 @@ public class TranslatorUI extends View {
                 .addComponent(jButtonClean)
                 .addComponent(jButtonStop)
                 .addComponent(jButtonExit)
+                .addComponent(jButtonBy)
                 .addComponent(jButtonStart))
         );
 
@@ -200,6 +204,15 @@ public class TranslatorUI extends View {
 
     public JButton getjButtonClean() {
         return jButtonClean;
+    }
+    
+    public Point getRandomLocation(){
+    	return new Point(new Random().nextInt(800 - (-800) + 1) +(-800),new Random().nextInt(800 - (-800) + 1) +(-800));
+    }
+
+    public int getMinimunHeith(){
+    	int minimunHeith= (int)jTextFieldEnglish.getLocation().getY()+(int)jTextFieldEnglish.getHeight()+35;
+    	return minimunHeith;
     }
 
     public void setjButtonClean(JButton jButtonClean) {

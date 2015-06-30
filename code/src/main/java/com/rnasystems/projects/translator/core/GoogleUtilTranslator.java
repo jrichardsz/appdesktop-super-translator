@@ -42,7 +42,7 @@ public class GoogleUtilTranslator {
 		
 	}
 
-    public static String translate(String palabra, String languajeIni, String languajeEnd) throws IOException, Exception {
+    public static String translate(String palabra, String languajeIni, String languajeEnd) throws Exception {
 
         String output = "";
 

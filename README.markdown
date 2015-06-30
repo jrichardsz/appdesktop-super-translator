@@ -26,7 +26,7 @@ Practically if you think of a word, this already translated!
 https://github.com/jrichardsz/appdesktop-super-translator/raw/master/download/super-translator-2.0.0-linux.zip
 #Windows X64 Distribution:
 https://github.com/jrichardsz/appdesktop-super-translator/raw/master/download/super-translator-2.0.0-windows-x64.zip
-#Windows X64 Distribution:
+#Windows X86 Distribution:
 https://github.com/jrichardsz/appdesktop-super-translator/raw/master/download/super-translator-2.0.0-windows-x86.zip
 
 ##Features

@@ -1,4 +1,4 @@
-#Super Translator
+#Super Translator 2.0.0
 https://www.youtube.com/watch?v=Nk1hTzvfmJ8
 
 This is the project that translates from English <---> Spanish in a fast using java and google. 
@@ -22,21 +22,27 @@ Fast Translator will help you translate words and phrases instantly.
 Practically if you think of a word, this already translated!
 
 ##Download
-https://github.com/jrichardsz/appdesktop-super-translator/archive/master.zip
+#Linux Distribution:
+https://github.com/jrichardsz/appdesktop-super-translator/raw/master/download/super-translator-2.0.0-linux.zip
+#Windows X64 Distribution:
+https://github.com/jrichardsz/appdesktop-super-translator/raw/master/download/super-translator-2.0.0-windows-x64.zip
+#Windows X64 Distribution:
+https://github.com/jrichardsz/appdesktop-super-translator/raw/master/download/super-translator-2.0.0-windows-x86.zip
 
 ##Features
 The app currently provides the following functionality,
 
   * Quick translation.
   * Recognizes the clipboard to translate the copied.
-  * Plays the translated text.
   * Based on Java technology.
-  * Based on the technology of google translator.
+  * Based on the technology of google translator(generic)
   * Very practical Keyboard Shortcuts.
+  * Now support third party translator engine. It means that you can create your own engine , for example https://www.bing.com/translator/
   
 The application in the future will provide the following functions
 
    * Support for more languages??.
+   * Plays the translated text.
    * Keyboard Shortcuts to focus and manage the application.
    * Speech Recognition to translate.
    * Insert Google API in full.

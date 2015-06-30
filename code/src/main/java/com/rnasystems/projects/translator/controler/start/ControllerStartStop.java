@@ -4,21 +4,17 @@
  */
 package com.rnasystems.projects.translator.controler.start;
 
-import java.awt.Toolkit;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.Transferable;
-import java.awt.datatransfer.UnsupportedFlavorException;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.datatransfer.*;
+import java.awt.event.*;
 
-import javax.swing.JButton;
-import javax.swing.JTextField;
-import javax.swing.Timer;
+import javax.swing.*;
 
-import com.rnasystems.projects.translator.controler.Controler;
-import com.rnasystems.projects.translator.core.GoogleUtilTranslator;
-import com.rnasystems.projects.translator.view.impl.TranslatorUI;
+import com.rnasystems.projects.translator.common.util.*;
+import com.rnasystems.projects.translator.controler.*;
+import com.rnasystems.projects.translator.core.*;
+import com.rnasystems.projects.translator.core.deprecated.*;
+import com.rnasystems.projects.translator.view.impl.*;
 //import com.rnasystems.projects.translator.core.GoogleUtilTranslator;
 
 /**
@@ -81,12 +77,12 @@ public class ControllerStartStop extends Controler {
                     // lo sacamos por la estándar out.
                     if (t.isDataFlavorSupported(dataFlavorStringJava)) {
                         String texto = (String) t.getTransferData(dataFlavorStringJava);
-                        texto = GoogleUtilTranslator.cleanText(texto);
+                        texto = StringUtils.cleanText(texto);
                         if (texto != null && !texto.equals("")) {
 
                             if (isFirst) {
-                                jTextFieldEnglish.setText(GoogleUtilTranslator.translate(texto, "es", "en"));
-                                jTextFieldSpanish.setText(GoogleUtilTranslator.translate(texto, "en", "es"));
+                                jTextFieldEnglish.setText(SystemEnvironment.translatorEngine.translate(texto, "es", "en"));
+                                jTextFieldSpanish.setText(SystemEnvironment.translatorEngine.translate(texto, "en", "es"));
                                 clear();
                             } else {
                                 isFirst = true;

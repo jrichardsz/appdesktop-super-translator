@@ -7,7 +7,7 @@ package com.rnasystems.projects.translator.controler.tts;
 import java.awt.event.ActionEvent;
 
 import com.rnasystems.projects.translator.controler.Controler;
-import com.rnasystems.projects.translator.core.GoogleUtilTranslator;
+import com.rnasystems.projects.translator.core.deprecated.*;
 import com.rnasystems.projects.translator.view.impl.TranslatorUI;
 
 /**
@@ -48,7 +48,8 @@ public class ControllerTTS extends Controler {
     
     public void playSpanish(){
     	try {
-			GoogleUtilTranslator.executeTTS(jTextFieldSpanish.getText(), "es");
+			//GoogleUtilTranslator.executeTTS(jTextFieldSpanish.getText(), "es");
+    		 throw new UnsupportedOperationException("Not supported yet."); 
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
@@ -56,7 +57,8 @@ public class ControllerTTS extends Controler {
     
     public void playEnglish(){
     	try {
-			GoogleUtilTranslator.executeTTS(jTextFieldEnglish.getText(), "en");
+			//GoogleUtilTranslator.executeTTS(jTextFieldEnglish.getText(), "en");
+    		 throw new UnsupportedOperationException("Not supported yet."); 
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}

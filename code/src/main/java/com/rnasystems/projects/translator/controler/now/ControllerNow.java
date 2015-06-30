@@ -10,7 +10,7 @@ import java.io.*;
 import com.rnasystems.projects.translator.common.util.*;
 import com.rnasystems.projects.translator.controler.*;
 import com.rnasystems.projects.translator.core.*;
-import com.rnasystems.projects.translator.snippet.*;
+import com.rnasystems.projects.translator.core.deprecated.*;
 import com.rnasystems.projects.translator.view.impl.*;
 
 /**
@@ -75,9 +75,9 @@ public class ControllerNow extends Controler {
     
     private void traduceSpanishNow() throws Exception {
         String text = jTextFieldSpanish.getText();
-        text = GoogleUtilTranslator.cleanText(text);
+        text = StringUtils.cleanText(text);
         try {
-            jTextFieldEnglish.setText(GoogleUtilTranslator.translate(text, "es", "en"));
+            jTextFieldEnglish.setText(SystemEnvironment.translatorEngine.translate(text, "es", "en"));
         } catch (Exception e) {
             System.out.println(e.getCause().getMessage());
             check503CodeError(e);
@@ -86,9 +86,9 @@ public class ControllerNow extends Controler {
     
     private void traduceEnglishNow() throws Exception {
         String texto = jTextFieldEnglish.getText();
-        texto = GoogleUtilTranslator.cleanText(texto);
+        texto = StringUtils.cleanText(texto);
         try {
-            jTextFieldSpanish.setText(GoogleUtilTranslator.translate(texto, "en", "es"));
+            jTextFieldSpanish.setText(SystemEnvironment.translatorEngine.translate(texto, "en", "es"));
         } catch (IOException ex) {
             System.out.println(ex.getCause().getMessage());
             check503CodeError(ex);
@@ -96,11 +96,11 @@ public class ControllerNow extends Controler {
     }  
     
     private void check503CodeError(Exception e) throws Exception{
-    	String coderrror503 = TranslatorParameters.getProperty(TranslatorConstants.GOOGLE_CAPTCHA);
-    	if(e.getCause().getMessage().contains(coderrror503)){
-    		GoogleHttpCodeError503 codeError503 = new GoogleHttpCodeError503();
-    		codeError503.resolve(view,e);
-    	}  
+//    	String coderrror503 = TranslatorParameters.getProperty(TranslatorConstants.GOOGLE_CAPTCHA);
+//    	if(e.getCause().getMessage().contains(coderrror503)){
+//    		//GoogleHttpCodeError503 codeError503 = new GoogleHttpCodeError503();
+//    		//codeError503.resolve(view,e);
+//    	}  
     }
     
     private javax.swing.JButton jButtonNow;

@@ -22,6 +22,8 @@ public class TranslatorUI extends View {
 
 	private static final long serialVersionUID = 1L;
 
+	private int minHeight = 0;
+	
     public TranslatorUI() {
     	super();
     }
@@ -211,8 +213,12 @@ public class TranslatorUI extends View {
     }
 
     public int getMinimunHeith(){
-    	int minimunHeith= (int)jTextFieldEnglish.getLocation().getY()+(int)jTextFieldEnglish.getHeight()+35;
-    	return minimunHeith;
+    	
+    	if(minHeight==0){
+    		minHeight = getHeight();
+    	}
+    	
+    	return minHeight;
     }
 
     public void setjButtonClean(JButton jButtonClean) {

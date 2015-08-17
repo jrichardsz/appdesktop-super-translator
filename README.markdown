@@ -48,7 +48,13 @@ The application in the future will provide the following functions
    * Insert Google API in full.
    * Many more that the community can provide.
 
+##Maven Dependecies
 
+  * Please install this depencies ir order to compile proyect!
+  * https://github.com/jrichardsz/appdesktop-super-translator-engine-interface
+  * https://github.com/jrichardsz/libraries/tree/master/linet-util
+  * https://github.com/jrichardsz/libraries/tree/master/linet-swing
+  * https://github.com/jrichardsz/lib-java-google-translate-text-to-speech/tree/master/code/java-google-translate-text-to-speech
 
 ##Changelog
 See CHANGELOG.markdown for Version History/Changelog

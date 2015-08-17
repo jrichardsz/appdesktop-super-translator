@@ -21,13 +21,19 @@
 		<dependency>
 			<groupId>com.linet.util</groupId>
 			<artifactId>linet-util</artifactId>
-			<version>1.0.0</version>
+			<version>1.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>com.linet.api.swing</groupId>
 			<artifactId>linet-swing</artifactId>
 			<version>1.0.1</version>
 		</dependency>
+	
+		<dependency>
+			<groupId>com.rnasystems.projects.translator</groupId>
+			<artifactId>super-translator-engine-interface</artifactId>
+			<version>1.0.1</version>
+		</dependency>		
 
 		<dependency>
 			<groupId>de.huxhorn.sulky</groupId>

@@ -37,15 +37,13 @@ public class SystemEnvironment{
 	}
 	
 	public static void defineDefaultTranslatorEngine() throws Exception{
-		TranslatorParameters.initializePath(FileUtil.getPathFromWhereApplicationIsRunning() + File.separator + "config" + File.separator + "config.properties");
 		
 		String thirdPartyTranslatorEngine = null;
 		
 		try{
 			thirdPartyTranslatorEngine = TranslatorParameters.getProperty(THIRD_PARTY_TRANSLATOR_ENGINE);
 		}catch(Exception exception){
-			exception.printStackTrace();
-			System.out.println("Is not an error, just does not exist a third party translator engine");
+			System.out.println("Is not an error, just does not set a third party translator engine."+exception.getMessage());
 		}
 		
 		if(thirdPartyTranslatorEngine==null || thirdPartyTranslatorEngine.equals("")){
@@ -122,6 +120,7 @@ public class SystemEnvironment{
 	
 	protected static void enableGenericTranslatorEngine(){
 		isThirdPartyTranslatorEngineEnabled = false;
+		System.out.println("Starting default translator engine configuration.");
 		translatorEngine = new HtmlUnitGoogleUITranslator();
 	}
 	
@@ -152,15 +151,17 @@ public class SystemEnvironment{
 	 
 	    	} catch (IOException ex) {
 	    		ex.printStackTrace();
-	        } finally{
-	        	if(input!=null){
-	        		try {
-					input.close();
-				} catch (IOException e) {
-					e.printStackTrace();
+			}
+			finally{
+				if(input != null) {
+					try{
+						input.close();
+					}
+					catch(IOException e){
+						e.printStackTrace();
+					}
 				}
-	        	}
-	        }
+			}
 			
 		}
 		

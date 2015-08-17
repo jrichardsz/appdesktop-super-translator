@@ -1,7 +1,7 @@
 #Super Translator 2.0.0
 https://www.youtube.com/watch?v=Nk1hTzvfmJ8
 
-This is the project that translates from English <---> Spanish in a fast using java and google. 
+Super Translator is an app that enables translation with a simple way using engines like google or bing and of course with JAVA TECHNOLOGY.
 
 ## Description
 
